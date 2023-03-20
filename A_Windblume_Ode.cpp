@@ -1,0 +1,70 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#include<ext/pb_ds/assoc_container.hpp>
+#include<ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+
+#define PI            2*acos(0.0)
+#define ll            long long int
+#define ull           unsigned long long int
+#define yes           cout<<"YES"<<endl
+#define no            cout<<"NO"<<endl
+#define fix(x)        cout<<fixed<<setprecision(x)
+#define MOD           1e9+7
+#define endl          ("\n")
+#define vector        vector<ll>
+#define gcd(a,b)      __gcd(a,b)
+#define lcm(a,b)      (a*(b/__gcd(a,b)))
+#define FAST          ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL);
+
+typedef tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update > pbds;
+
+void solve(){
+    int n,sum=0;
+    cin>>n;
+    int a[n+2];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+        sum+=a[i];
+    }
+    int pos=-1;
+    if(sum%2==1){
+        bool isprime=true;
+        for(int i=2;i*i<=sum;i++){
+            if(sum%i==0) isprime=false;
+        }
+        if(isprime){
+            for(int i=0;i<n;i++){
+                if(a[i]%2==1){
+                    pos=i+1;
+                    break;
+                }
+            }
+        }
+    }
+    if(pos==-1){
+        cout<<n<<endl;
+        for(int i=1;i<=n;i++) cout<<i<<" ";
+        cout<<endl;
+    }
+    else{
+        cout<<n-1<<endl;
+        for(int i=1;i<=n;i++){
+            if(i!=pos) cout<<i<<" ";
+        }
+        cout<<endl;
+    }
+}
+
+int main() 
+{
+    FAST
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        solve();        
+    }
+    return 0;
+}

@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+
+#define PI            2*acos(0.0)
+#define ll            long long int
+#define ull           unsigned long long int
+#define MOD           1e9+7
+#define endl          ("\n")
+#define vector        vector<ll>
+#define gcd(a,b)      __gcd(a,b)
+#define lcm(a,b)      (a*(b/__gcd(a,b)))
+#define fr(i,n)       for(int i=0;i<n;i++)
+#define rfr(i,n)    for(int i=n-1;i>=0;i--)
+#define FAST          ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL);
+
+using namespace std;
+
+void solve(){
+    ll n,m,mincost=0;
+    cin>>n>>m;
+    ll k[n+1];
+    ll c[m+1];
+    for(int i=1;i<=n;i++)cin>>k[i];
+    for(int i=1;i<=m;i++)cin>>c[i];
+    sort(k+1,k+n+1,greater<ll>());
+    for(int i=1;i<=n;i++){
+        if(i<=k[i]) mincost+=c[i];
+        else mincost+=c[k[i]];
+    }
+    cout<<mincost<<endl;
+}
+
+int main() 
+{
+    FAST
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        solve();        
+    }
+    return 0;
+}
